@@ -10,5 +10,6 @@ namespace Almeida.Domain.Entities
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public DateTime DataInicio { get; set; }
+        public string Telefone { get; set; }
     }
 }
