@@ -1,13 +1,8 @@
-﻿using Almeida.Domain.Entities;
-using Almeida.Domain.ValueObjects;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Almeida.Domain.ValueObjects;
 
 namespace Almeida.Infrastructure.Context
 {
-    public class AlmeidaContext : DbContext
+    public class AlmeidaContext
     {
         private readonly ConnectionStrings _connectionStrings;
 
@@ -16,7 +11,6 @@ namespace Almeida.Infrastructure.Context
             _connectionStrings = keys;
         }
 
-        public DbSet<Pessoas> Pessoas { get; set; }
 
 
 

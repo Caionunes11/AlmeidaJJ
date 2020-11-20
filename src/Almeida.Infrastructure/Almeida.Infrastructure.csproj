@@ -5,15 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Almeida.Domain\Almeida.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>
