@@ -12,6 +12,6 @@ namespace Almeida.Domain.Entities
         public int PessoaAtividadeId { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataAlteracao { get; set; }
-        public byte Ativo { get; set; }
+        public bool Ativo { get; set; }
     }
 }

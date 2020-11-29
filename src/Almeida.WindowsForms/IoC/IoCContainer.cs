@@ -1,11 +1,14 @@
 ﻿using Almeida.Application.AutoMapper;
-using Almeida.Application.Interfaces;
-using Almeida.Application.Services;
 using Almeida.CrossCutting;
 using Almeida.Domain.ValueObjects;
+using Almeida.WindowsForms.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Almeida.WindowsForms.IoC
 {
@@ -19,9 +22,12 @@ namespace Almeida.WindowsForms.IoC
             {
                 AlmeidaConnectionStrings = ConfigurationManager.ConnectionStrings["AlmeidaConnectionStrings"].ConnectionString
             };
+
             services.AddSingleton(connectionStrings);
+            //services.AddSingleton(new AlmeidaConfiguration());
             services.AddSingleton(AutoMapperConfiguration.RegisterMappings().CreateMapper());
             NativeInjectorBootStrapper.RegisterServices(services);
+
 
             Container = services.BuildServiceProvider();
 

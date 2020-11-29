@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AlmeidaJJ.WindowsForms
+namespace Almeida.WindowsForms.Formularios
 {
-    public partial class frmTelaInicial : Form
+    public partial class frmModelo : Form
     {
-        public frmTelaInicial()
+        public frmModelo()
         {
             InitializeComponent();
         }
-
     }
 }
