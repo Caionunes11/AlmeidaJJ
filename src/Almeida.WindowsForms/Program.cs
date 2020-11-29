@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Almeida.Application.Services;
+using Almeida.WindowsForms.IoC;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Ninject;
+using System;
 
 namespace Almeida.WindowsForms
 {
-    static class Program
+
+    class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -14,9 +16,13 @@ namespace Almeida.WindowsForms
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+            var services = new ServiceCollection();
+            IoCContainer.Register(services);
+            
+            System.Windows.Forms.Application.Run(new Form1());
+
         }
     }
 }

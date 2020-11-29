@@ -1,6 +1,6 @@
 ﻿namespace Almeida.WindowsForms
 {
-    partial class frmConsulta
+    partial class frmCadastroCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -148,7 +148,7 @@
             this.Controls.Add(this.txbNome);
             this.Name = "frmConsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmConsulta";
+            this.Text = "frmCadastro";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,22 +11,23 @@ using System.Windows.Forms;
 
 namespace Almeida.WindowsForms
 {
-    public partial class frmConsulta : Form
+
+    public partial class frmCadastroCliente : Form
     {
-        public frmConsulta()
+        public frmCadastroCliente()
         {
             InitializeComponent();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Pessoas pessoas = new Pessoas();
+            Pessoa pessoas = new Pessoa();
             pessoas.Nome = txbNome.Text;
-            pessoas.Cpf = txbCPF.Text;
+            pessoas.Documento = txbCPF.Text;
             pessoas.Telefone = txbTelefone.Text;
-            pessoas.DataInicio = DateTime.Now;
+           // pessoas.DataInicio = DateTime.Now;
 
-            PessoaRepository pessoaRepository = new PessoaRepository();
+            PessoaRepositorys pessoaRepository = new PessoaRepositorys();
             pessoaRepository.Save(pessoas);
 
 

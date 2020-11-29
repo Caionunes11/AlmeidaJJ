@@ -6,9 +6,9 @@ using System.Data.SqlClient;
 
 namespace Almeida.WindowsForms
 {
-    public class PessoaRepository : AbstractRepository<Pessoas, int>
+    public class PessoaRepositorys : AbstractRepository<Pessoa, int>
     {
-        public override void Delete(Pessoas entity)
+        public override void Delete(Pessoa entity)
         {
             throw new NotImplementedException();
         }
@@ -18,14 +18,14 @@ namespace Almeida.WindowsForms
             throw new NotImplementedException();
         }
 
-        public override List<Pessoas> GetAll()
+        public override List<Pessoa> GetAll()
         {
             string sql = "SELECT Nome, Cpf, Telefone, DataInicio FROM Pessoa order by Nome";
             using (var conn = new SqlConnection(ConnectionStrings))
             {
                 var cmd = new SqlCommand(sql, conn);
-                List<Pessoas> list = new List<Pessoas>();
-                Pessoas p = null;
+                List<Pessoa> list = new List<Pessoa>();
+                Pessoa p = null;
                 try
                 {
                     conn.Open();
@@ -33,10 +33,10 @@ namespace Almeida.WindowsForms
                     {
                         while (reader.Read())
                         {
-                            p = new Pessoas();
+                            p = new Pessoa();
                             p.Id = (int)reader["Id"];
                             p.Nome = reader["Nome"].ToString();
-                            p.Cpf = reader["CPF"].ToString();
+                            p.Documento = reader["CPF"].ToString();
                             p.Telefone = reader["Telefone"].ToString();
                             list.Add(p);
                         }
@@ -50,12 +50,12 @@ namespace Almeida.WindowsForms
             }
 
         }
-        public override Pessoas GetById(int id)
+        public override Pessoa GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public override void Save(Pessoas entity)
+        public override void Save(Pessoa entity)
         {
             //var caminhoBanco = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "BancoAlmeidaJJ.mdf");
             //var stringConexao = string.Format(@"Server=(localdb)\mssqllocaldb; Integrated Security=true; AttachDbFileName={0};", caminhoBanco);
@@ -68,8 +68,8 @@ namespace Almeida.WindowsForms
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Nome", entity.Nome);
                 cmd.Parameters.AddWithValue("@Telefone", entity.Telefone);
-                cmd.Parameters.AddWithValue("@Cpf", entity.Cpf);
-                cmd.Parameters.AddWithValue("@DataInicio", entity.DataInicio);
+                cmd.Parameters.AddWithValue("@Cpf", entity.Documento);
+                //cmd.Parameters.AddWithValue("@DataInicio", entity.DataInicio);
                 try
                 {
                     conn.Open();
@@ -83,8 +83,45 @@ namespace Almeida.WindowsForms
             }
 
         }
+        //public DataTable GetConsultaPessoaPagamento()
+        //{
 
-        public override void Update(Pessoas entity)
+        //    DataTable tabela = new DataTable();
+
+        //    //SqlDataAdapter da = new SqlDataAdapter(" SELECT Nome, Telefone, CPF, DataInicio, pg.DataPagamento " +
+        //    // " FROM " +
+        //    // " dbo.Pessoa as pe " +
+        //    // " left join dbo.Pagamento pg " +
+        //    // " on pe.Id = pg.PessoaId ", ConnectionStrings);
+        //    //da.Fill(tabela);
+        //    //return tabela;
+
+
+        //    //using (var conn = new SqlConnection(ConnectionStrings))
+        //    //{
+        //    //    var sql = " SELECT pe.Id, Nome, Telefone, CPF, DataInicio, pg.DataPagamento " +
+        //    // " FROM " +
+        //    // " dbo.Pessoa as pe " +
+        //    // " left join dbo.Pagamento pg " +
+        //    // " on pe.Id = pg.PessoaId ";
+        //    //    SqlCommand cmd = new SqlCommand(sql, conn);
+        //    //    try
+        //    //    {
+        //    //       conn.Open();
+        //    //       var dados =  cmd.ExecuteReader();
+        //    //        System.Windows.Forms.MessageBox.Show("Sucesso ao salvar");
+        //    //        tabela.Select(dados);
+        //    //        return tabela;
+        //    //    }
+        //    //    catch (Exception e)
+        //    //    {
+        //    //        throw e;
+        //    //    }
+        //    //}
+
+        //}
+
+        public override void Update(Pessoa entity)
         {
             throw new NotImplementedException();
         }
