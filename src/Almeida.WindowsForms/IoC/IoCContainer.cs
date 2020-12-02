@@ -17,7 +17,7 @@ namespace Almeida.WindowsForms.IoC
         private static IServiceProvider Container;
         public static void Register(IServiceCollection services)
         {
-
+            
             var connectionStrings = new ConnectionStrings
             {
                 AlmeidaConnectionStrings = ConfigurationManager.ConnectionStrings["AlmeidaConnectionStrings"].ConnectionString
