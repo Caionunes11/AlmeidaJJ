@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Almeida.Domain.Entities
 {
-   public class TipoPagamento
+    public class TipoPagamento
     {
         public int Id { get; set; }
         public string Descricao { get; set; }

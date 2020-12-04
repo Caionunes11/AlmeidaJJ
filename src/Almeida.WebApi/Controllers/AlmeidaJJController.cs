@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Almeida.Application.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Almeida.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Almeida.WebApi.Controllers
 {
@@ -28,7 +24,7 @@ namespace Almeida.WebApi.Controllers
         {
             try
             {
-                
+
                 var teste = _pessoaServices.GetByAll();
                 return Ok(teste);
             }
@@ -42,6 +38,6 @@ namespace Almeida.WebApi.Controllers
 
 
     }
-   
+
 
 }

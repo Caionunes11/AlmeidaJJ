@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Almeida.Domain.Entities
 {
@@ -12,6 +10,6 @@ namespace Almeida.Domain.Entities
         public byte CheckPresenca { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataAlteracao { get; set; }
-        
+
     }
 }
