@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Almeida.Domain.Entities
 {
-   public class PessoaAtividade
+    public class PessoaAtividade
     {
         public int Id { get; set; }
         public int PessoaId { get; set; }

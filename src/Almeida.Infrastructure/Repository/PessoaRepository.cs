@@ -18,7 +18,8 @@ namespace Almeida.Infrastructure.Repository
 
         public IList<Pessoa> GetByAll()
         {
-            return _context.Pessoa.AsNoTracking().ToList();
+            var teste = _context.Pessoa.AsNoTracking().ToList();
+            return teste;
         }
 
     }

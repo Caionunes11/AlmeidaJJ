@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Almeida.Application.AutoMapper;
+﻿using Almeida.Application.AutoMapper;
 using Almeida.CrossCutting;
 using Almeida.Domain.ValueObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +24,7 @@ namespace Almeida.WebApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton(Configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>());
             services.AddSingleton(AutoMapperConfiguration.RegisterMappings().CreateMapper());
-            
+
             services.AddSwaggerGen(x =>
             {
                 x.SwaggerDoc("v1",
@@ -48,10 +43,10 @@ namespace Almeida.WebApi
             RegisterServices(services);
 
         }
-       
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-       
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

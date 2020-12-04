@@ -1,41 +1,42 @@
 ﻿using Almeida.Application.AutoMapper;
+using Almeida.Application.Interfaces;
+using Almeida.Application.Services;
 using Almeida.CrossCutting;
 using Almeida.Domain.ValueObjects;
-using Almeida.WindowsForms.Configuration;
+using Almeida.WindowsForms.Formularios;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Almeida.WindowsForms.IoC
 {
     public class IoCContainer
     {
-        private static IServiceProvider Container;
-        public static void Register(IServiceCollection services)
-        {
+       
+        //private static IServiceProvider Container;
+        //public static void Register(IServiceCollection services)
+        //{
+
+        //    var connectionStrings = new ConnectionStrings
+        //    {
+        //        AlmeidaConnectionStrings = ConfigurationManager.ConnectionStrings["AlmeidaConnectionStrings"].ConnectionString
+        //    };
+
+        //    services.AddSingleton(connectionStrings);
+        //    //services.AddSingleton(new AlmeidaConfiguration());
+        //    services.AddSingleton(AutoMapperConfiguration.RegisterMappings().CreateMapper());
             
-            var connectionStrings = new ConnectionStrings
-            {
-                AlmeidaConnectionStrings = ConfigurationManager.ConnectionStrings["AlmeidaConnectionStrings"].ConnectionString
-            };
+        //    services.AddScoped<frmConsultaGeralUsuarios>();
+        //    services.AddScoped<frmNovoCadastroColaborador>();
+        //    services.AddScoped<frmPrincipal>();
+        //    NativeInjectorBootStrapper.RegisterServices(services);
 
-            services.AddSingleton(connectionStrings);
-            //services.AddSingleton(new AlmeidaConfiguration());
-            services.AddSingleton(AutoMapperConfiguration.RegisterMappings().CreateMapper());
-            NativeInjectorBootStrapper.RegisterServices(services);
+        //    Container = services.BuildServiceProvider();
 
-
-            Container = services.BuildServiceProvider();
-
-        }
-        public static T GetService<T>()
-        {
-            return (T)Container.GetService(typeof(T));
-        }
+        //}
+        
 
 
     }

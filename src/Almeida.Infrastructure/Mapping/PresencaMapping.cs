@@ -1,13 +1,10 @@
 ﻿using Almeida.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Almeida.Infrastructure.Mapping
 {
-   public class PresencaMapping : IEntityTypeConfiguration<Presenca>
+    public class PresencaMapping : IEntityTypeConfiguration<Presenca>
     {
         public void Configure(EntityTypeBuilder<Presenca> builder)
         {
@@ -21,6 +18,6 @@ namespace Almeida.Infrastructure.Mapping
             builder.Property(x => x.DataAlteracao);
         }
     }
-    
-    
+
+
 }
