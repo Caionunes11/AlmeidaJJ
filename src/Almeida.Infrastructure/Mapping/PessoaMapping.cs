@@ -21,6 +21,8 @@ namespace Almeida.Infrastructure.Mapping
             builder.Property(x => x.DataCriacao);
             builder.Property(x => x.DataAlteracao);
             builder.Property(x => x.Ativo);
+            builder.Property(x => x.Peso);
+            builder.Property(x => x.Altura);
         }
     }
 }

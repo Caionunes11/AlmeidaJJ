@@ -13,31 +13,19 @@ using System.Windows.Forms;
 
 namespace Almeida.WindowsForms.Formularios
 {
-    public partial class frmPrincipal : frmModelo
+    public partial class frmPrincipal : Form
     {
-       private readonly frmConsultaGeralUsuarios _frmConsultaGeralUsuarios;
-        public frmPrincipal(frmConsultaGeralUsuarios frmConsultaGeralUsuarios)
+        private readonly IPessoaServices _pessoaServices;
+        public frmPrincipal(IPessoaServices pessoaServices)
         {
-            
+            _pessoaServices = pessoaServices;
             InitializeComponent();
-            _frmConsultaGeralUsuarios = frmConsultaGeralUsuarios;
+            
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            frmNovoCadastroColaborador frmNovoCadastro = new frmNovoCadastroColaborador();
-            frmNovoCadastro.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {           
-            _frmConsultaGeralUsuarios.Show();
-
+            _pessoaServices.GetByAll();
         }
     }
 }
