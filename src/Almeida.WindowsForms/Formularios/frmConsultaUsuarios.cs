@@ -1,5 +1,4 @@
 ﻿using Almeida.Application.Interfaces;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,20 +11,20 @@ using System.Windows.Forms;
 
 namespace Almeida.WindowsForms.Formularios
 {
-    public partial class frmConsultaGeralUsuarios : frmModelo
+    public partial class frmConsultaUsuarios : Form
     {
         private readonly IPessoaServices _pessoaServices;
-        private readonly ILogger _logger;
-        public frmConsultaGeralUsuarios(IPessoaServices pessoaServices)
+        public frmConsultaUsuarios(IPessoaServices pessoaServices)
         {
-            
-            InitializeComponent();
             _pessoaServices = pessoaServices;
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
 
-        private void frmConsultaGeralUsuarios_Load(object sender, EventArgs e)
+        private void frmConsultaUsuarios_Load(object sender, EventArgs e)
         {
-            _pessoaServices.GetByAll();
+            
         }
     }
 }

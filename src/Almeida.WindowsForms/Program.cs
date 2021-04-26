@@ -2,14 +2,14 @@
 using Almeida.CrossCutting;
 using Almeida.Domain.ValueObjects;
 using Almeida.WindowsForms.Formularios;
+using Almeida.WindowsForms.Formularios.Controles;
+using Almeida.WindowsForms.IoC;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Ninject;
 using System;
 using System.Configuration;
-
-
-
 
 namespace Almeida.WindowsForms
 {
@@ -30,15 +30,13 @@ namespace Almeida.WindowsForms
                 };
 
                 services.AddSingleton(connectionStrings);
+                services.AddSingleton<frmModelo>();
                 services.AddSingleton<frmPrincipal>();
-                services.AddSingleton<frmConsultaGeralUsuarios>();
-                services.AddSingleton<frmNovoCadastroColaborador>();
+                services.AddSingleton<UserControleNovosCadastros>();
+                services.AddSingleton<frmCadastroNovoUsuario>();
                 services.AddSingleton(AutoMapperConfiguration.RegisterMappings().CreateMapper());
                 services.AddLogging(configure => configure.AddConsole());
                 NativeInjectorBootStrapper.RegisterServices(services);
-
-                //services.AddScoped<IPessoaServices, PessoaServices>();
-
             });
 
             var host = builder.Build();
@@ -47,22 +45,15 @@ namespace Almeida.WindowsForms
                 var services = serviceScope.ServiceProvider;
                 try
                 {
-                    var form1 = services.GetRequiredService<frmPrincipal>();
-                    System.Windows.Forms.Application.Run(form1);
+                    var formInicial = services.GetRequiredService<frmModelo>();
+                    System.Windows.Forms.Application.Run(formInicial);
                 }
                 catch (Exception ex)
                 {
                     NotImplementedException e;
                 }
             }
-
-            //System.Windows.Forms.Application.EnableVisualStyles();
-            //System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
-            //var services = new ServiceCollection();
-            // IoCContainer.Register(services);
-
-            //System.Windows.Forms.Application.Run(new frmPrincipal());
-            //System.Windows.Forms.Application.Run(new frmPrincipal());
+          
 
         }
     }

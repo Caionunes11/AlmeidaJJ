@@ -1,6 +1,7 @@
-﻿namespace Almeida.WindowsForms.Formularios
+﻿
+namespace Almeida.WindowsForms.Formularios
 {
-    partial class frmConsultaGeralUsuarios
+    partial class frmConsultaUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +31,16 @@
         {
             this.SuspendLayout();
             // 
-            // frmConsultaGeralUsuarios
+            // frmConsultaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "frmConsultaGeralUsuarios";
-            this.Text = "frmConsultaGeralUsuarios";
-            this.Load += new System.EventHandler(this.frmConsultaGeralUsuarios_Load);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(45)))));
+            this.ClientSize = new System.Drawing.Size(599, 515);
+            this.Name = "frmConsultaUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "frmConsultaUsuarios";
+            this.Load += new System.EventHandler(this.frmConsultaUsuarios_Load);
             this.ResumeLayout(false);
 
         }
