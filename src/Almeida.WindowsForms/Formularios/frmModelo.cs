@@ -7,10 +7,12 @@ namespace Almeida.WindowsForms.Formularios
     public partial class frmModelo : Form
     {
         private readonly IPessoaServices _pessoaServices;
+        private readonly IAtividadeServices _atividadeSevices;
         //private readonly UserControleNovosCadastros _userControleNovosCadastros;
-        public frmModelo(IPessoaServices pessoaServices)
+        public frmModelo(IPessoaServices pessoaServices, IAtividadeServices atividadeServices)
         {
             _pessoaServices = pessoaServices;
+            _atividadeSevices = atividadeServices;
             InitializeComponent();
             //userControleNovosCadastros1.BringToFront();
         }
@@ -26,7 +28,7 @@ namespace Almeida.WindowsForms.Formularios
             //novo cadastro
             sidePainel.Height = button1.Height;
             sidePainel.Top = button1.Top;
-            frmCadastroNovoUsuario frmCadastroNovoUsuario = new frmCadastroNovoUsuario(_pessoaServices);
+            frmCadastroNovoUsuario frmCadastroNovoUsuario = new frmCadastroNovoUsuario(_pessoaServices, _atividadeSevices);
             frmCadastroNovoUsuario.ShowDialog();
             //userControleNovosCadastros1.BringToFront();
         }

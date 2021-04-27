@@ -13,6 +13,9 @@ namespace Almeida.CrossCutting
         {
             services.AddScoped<IPessoaServices, PessoaServices>();
             services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<IAtividadeServices, AtividadeServices>();
+            services.AddScoped<IAtividadeRepository, AtividadeRepository>();
+
             services.AddScoped<AlmeidaContext>();
         }
     }

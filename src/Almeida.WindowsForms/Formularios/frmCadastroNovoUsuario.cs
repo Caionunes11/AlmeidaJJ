@@ -8,16 +8,17 @@ namespace Almeida.WindowsForms.Formularios
     public partial class frmCadastroNovoUsuario : Form
     {
         private readonly IPessoaServices _pessoaServices;
-
-        public frmCadastroNovoUsuario(IPessoaServices pessoaServices)
+        private readonly IAtividadeServices _atividadeServices;
+        public frmCadastroNovoUsuario(IPessoaServices pessoaServices, IAtividadeServices atividadeServices)
         {
             _pessoaServices = pessoaServices;
+            _atividadeServices = atividadeServices;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
 
-      
+
 
         private void btnCancelar_Click(object sender, System.EventArgs e)
         {
@@ -43,6 +44,7 @@ namespace Almeida.WindowsForms.Formularios
                 pessoa.Peso = Convert.ToDecimal(txtPeso.Text);
                 pessoa.Altura = Convert.ToDecimal(txtAltura.Text);
 
+
                 if (radioF.Checked)
                 {
                     pessoa.Sexo = 'F';
@@ -54,12 +56,38 @@ namespace Almeida.WindowsForms.Formularios
                         pessoa.Sexo = 'M';
                     }
                 }
-                if (txtNome.Text == "" || txtCpf.Text == "" || txtNasc.Text == "" || txtEmail.Text == "" || radioF.Checked == false && radioM.Checked == false)
+
+                AtividadeViewModel atividade = new AtividadeViewModel();
+                atividade.Valor = 50;
+                atividade.VigenciaInicio = DateTime.Now;
+                atividade.VigenciaFim = null;
+                atividade.DataCriacao = DateTime.Now;
+                atividade.DataAlteracao = null;
+                atividade.Ativo = true;
+
+
+                bool checkList;
+                if (checkedListBox1.CheckedItems.Count != 0)
                 {
-                    MessageBox.Show("Por Favor. Preencha os campos obrigatórios '*'", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    checkList = true;
                 }
                 else
                 {
+                    checkList = false;
+                }
+
+                if (txtNome.Text == "" || txtCpf.Text == "" || txtNasc.Text == "" || txtEmail.Text == "" || radioF.Checked == false && radioM.Checked == false || checkList == false)
+                {
+                    MessageBox.Show("Por Favor. Preencha os campos obrigatórios '*'", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+                else
+                {
+                    foreach (string lista in checkedListBox1.CheckedItems)
+                    {
+                        atividade.Descricao = lista;
+                        _atividadeServices.SalvarAtividade(atividade);
+                    }
                     var result = MessageBox.Show("Tudo certo, deseja prosseguir com o cadastro?", "Confirmação",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question);
@@ -69,10 +97,11 @@ namespace Almeida.WindowsForms.Formularios
                         this.Close();
                     }
                 }
-                
-                
+
+
             }
-            catch { 
+            catch (Exception ex)
+            {
 
             }
 
